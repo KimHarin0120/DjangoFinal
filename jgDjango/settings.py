@@ -12,22 +12,25 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 # [코드 작성] os 모듈(Operating System) 불러오기
-
+import os
 # [코드 작성] 가상환경 관련 설정
-
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # [코드 작성] .env 파일의 내용을 가져올 수 있도록 경로 지정
-
+env = environ.Env(DEBUG=(bool, True))
+environ.Env.read_env(
+    env_file=os.SECRET_KEY = env('SECRET_KEY')path.join(BASE_DIR, '.env')
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # [코드 수정] SECRET_KEY 분리
-SECRET_KEY = 'django-insecure-+9@85!p(&i@9fx6%+=zcevg3kz6av#0%j&66bweyp#s3ez!6+w'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # [코드 수정] 개발 단계에서는 DEBUG를 True, 배포 단계에서는 DEBUG를 False로 설정
