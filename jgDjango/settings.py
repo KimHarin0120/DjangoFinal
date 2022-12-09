@@ -34,10 +34,10 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # [코드 수정] 개발 단계에서는 DEBUG를 True, 배포 단계에서는 DEBUG를 False로 설정
-DEBUG = True
+DEBUG = False
 
 # [코드 추가] ALLOWED_HOSTS에 '*'를 추가
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -134,7 +134,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 # [코드 작성] 배포 시 프로젝트에서 사용하는 모든 정적 파일을 모아두는 경로를 STATIC_ROOT로 지정
 # [코드 작성] os.path.join(BASE_DIR, 'staticfiles')을 사용하여 지정
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
